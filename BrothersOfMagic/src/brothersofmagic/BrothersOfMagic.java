@@ -4,7 +4,13 @@
  */
 package brothersofmagic;
 
-/**
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.lwjgl.LWJGLException;
+import org.lwjgl.opengl.Display;
+
+
+/** 
  *
  * @author MagRus
  */
@@ -15,6 +21,12 @@ public class BrothersOfMagic {
      */
     public static void main(String[] args) {
         System.out.println("POOP");
-        // TODO code application logic here
+        try {
+            Display.create();
+              
+              // TODO code application logic here
+        } catch (LWJGLException ex) {
+            Logger.getLogger(BrothersOfMagic.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
