@@ -4,9 +4,11 @@
  */
 package mombattle;
 
+import Graphics.OpenGL.GLUtil;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import org.lwjgl.opengl.Display;
 
 /**
  *
@@ -48,6 +50,12 @@ public class BattleGraphics extends JPanel{
     {
         super.paintComponent(g);
     
+    }
+
+    void drawScreen() {
+        
+        
+        Display.update();
     }
     
     

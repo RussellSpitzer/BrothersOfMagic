@@ -30,6 +30,17 @@ public class Character {
         this.sprite = sprite;
         
     }
+
+    public Character(int i, int i0, int i1, int i2, int i3, int i4, int i5, String path) { 
+        this (i,i0,i1,i2,i3,i4,i5,new ImageIcon());
+        System.out.println(path);
+        java.net.URL imgUrl = getClass().getResource(path);
+        if (imgUrl==null) {
+            System.out.println("Resource Not Found");
+            return;
+        }
+        this.sprite=new ImageIcon(imgUrl);
+    }
     
     public ImageIcon getSprite()
     {
