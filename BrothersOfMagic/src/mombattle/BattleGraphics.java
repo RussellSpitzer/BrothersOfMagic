@@ -4,6 +4,7 @@
  */
 package mombattle;
 
+import mombattle.units.Character;
 import Graphics.OpenGL.GLUtil;
 import javax.swing.*;
 import java.awt.*;
@@ -131,7 +132,7 @@ public class BattleGraphics extends JPanel{
                 
                 
       //          g.fillOval(c1.getX() * size, c1.getY()* size, size, size);
-            c.getSprite().paintIcon(this, g, size * c.getX(), size * c.getY());
+//            c.getSprite().paintIcon(this, g, size * c.getX(), size * c.getY());
             
             if(c.getHp() > 0){
                 
@@ -146,7 +147,7 @@ public class BattleGraphics extends JPanel{
             for(Character c : c2)
             {
        
-                c.getSprite().paintIcon(this, g, size * c.getX(), size * c.getY());
+//                c.getSprite().paintIcon(this, g, size * c.getX(), size * c.getY());
                 if(c.getHp() > 0)
                 {
                 g.setColor(Color.black);
@@ -189,7 +190,7 @@ public class BattleGraphics extends JPanel{
             g.fillRect(6, 21, ((ch.getHp() * 39) /ch.getMaxHp()), 4);
             g.setColor(Color.PINK);
             g.fillRect(6, 31, ((ch.getMp() * 39) /ch.getMaxMp()), 4);
-            ch.getSprite().paintIcon(this, g, 100, 20);
+         //   ch.getSprite().paintIcon(this, g, 100, 20);
             g.setColor(Color.black);
             g.drawString("HP: " + ch.getHp(), 50, 20);
             g.drawString("MP: " + ch.getMp(), 50, 30);

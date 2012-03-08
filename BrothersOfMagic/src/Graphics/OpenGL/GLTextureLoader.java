@@ -44,7 +44,7 @@ public class GLTextureLoader {
     
     
     
-    private HashMap<String,GLTexture> textureMap = new HashMap<String, GLTexture>();
+    public static HashMap<String,GLTexture> textureMap = new HashMap<String, GLTexture>();
     
    
     
@@ -75,10 +75,10 @@ public class GLTextureLoader {
     {
         GLTexture newTexture = new GLTexture();
         ByteBuffer imageData= convertImageToBytes(textureImage,newTexture); 
-        System.out.println(imageData.toString());
-        for (int x=0; x< imageData.capacity(); x+=3){
-            System.out.println(imageData.get(x)+","+imageData.get(x+1)+","+imageData.get(x+2));
-        }
+        //System.out.println(imageData.toString());
+        //for (int x=0; x< imageData.capacity(); x+=3){
+        //    System.out.println(imageData.get(x)+","+imageData.get(x+1)+","+imageData.get(x+2));
+       // }
         newTexture.textureID=createOpenGLTexture();
         glBindTexture(GL_TEXTURE_2D, newTexture.textureID);
          org.lwjgl.opengl.Util.checkGLError();

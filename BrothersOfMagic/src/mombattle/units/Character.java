@@ -2,17 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mombattle;
+package mombattle.units;
 
+import Graphics.OpenGL.GLTexture;
+import Graphics.OpenGL.GLTextureLoader;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author Andrew
  */
-public class Character {
+public class Character  extends BaseUnit{
     private int maxhp, maxmp, maxsp, hp, mp, at, df, sp, x, y;
-    private ImageIcon sprite;
+    //private ImageIcon sprite;
  
     public Character( int h, int m, int a, int d, int s, int x, int y, ImageIcon sprite)
     {
@@ -24,28 +26,21 @@ public class Character {
         at = a;
         df = d;
         sp = s;
-        this.x = x;
-        this.y = y;
-        
-        this.sprite = sprite;
+        battleMapX=this.x = x;
+        battleMapY=this.y = y;
         
     }
 
     public Character(int i, int i0, int i1, int i2, int i3, int i4, int i5, String path) { 
         this (i,i0,i1,i2,i3,i4,i5,new ImageIcon());
         System.out.println(path);
-        java.net.URL imgUrl = getClass().getResource(path);
-        if (imgUrl==null) {
-            System.out.println("Resource Not Found");
-            return;
+        this.sprite=GLTextureLoader.textureMap.get(path);
+        System.out.println(this.sprite.textureID);
+        if (this.sprite==null){
+            System.err.println("There was no sprite associated with "+path);
         }
-        this.sprite=new ImageIcon(imgUrl);
     }
     
-    public ImageIcon getSprite()
-    {
-        return sprite;
-    }
     public int getX()
     {
         return x;
