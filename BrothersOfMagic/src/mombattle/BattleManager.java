@@ -14,6 +14,9 @@ import mombattle.units.*;
  * @author MagRus
  */
 public class BattleManager {
+    
+    
+   
     public ArrayList<BaseUnit> currUnits=new ArrayList<BaseUnit>(); //All the units in the battle
     public ArrayList<ArmyUnit> army1 = new ArrayList<ArmyUnit>();
     public ArrayList<ArmyUnit> army2 = new ArrayList<ArmyUnit>();
@@ -24,22 +27,25 @@ public class BattleManager {
     ArmyUnit blueSold;
     BaseUnit rock1;
     ArmyUnit prime;
+    
+
+
 
     
     public void init(){
         
         //Here are just some BaseUnits that can be added to currUnits specifically by name.
-        rock1 = new BaseUnit() {}; rock1.battleMapX = 60; rock1.battleMapY = 60; rock1.sprite = GLTextureLoader.textureMap.get("Rock");        
-        blueGuy = new ArmyUnit(20, 20, 11, 10, 5, 0, 0, "BlueKnightSmall");
-        redGuy = new ArmyUnit(20, 20, 10, 10, 5, 60, 120, "RedKnightSmall");
-        blueSold = new ArmyUnit(10, 10, 10, 10, 5, 90, 210, "BlueSoldierSmall");
+        rock1 = new BaseUnit() {}; rock1.battleMapX = 2; rock1.battleMapY = 2; rock1.sprite = GLTextureLoader.textureMap.get("Rock");        
+        blueGuy = new ArmyUnit(20, 20, 11, 10, 5, 10, 10, "BlueKnightSmall");
+        redGuy = new ArmyUnit(20, 20, 10, 10, 5, 2, 4, "RedKnightSmall");
+        blueSold = new ArmyUnit(10, 10, 10, 10, 5, 3, 7, "BlueSoldierSmall");
 
         //TODO SET up a GAMEWORLD and FIGURE OUT A WAY TO ADD IN UNITS FROM GAMEWORLD Stacks of units?
-
+        
         army1.add(redGuy);
         army2.add(blueGuy);
         army2.add(blueSold);
-        army2.add(new mombattle.units.ArmyUnit(20, 20, 11, 10, 5, 450, 330, "BlueKnightSmall"));
+        army2.add(new mombattle.units.ArmyUnit(20, 20, 11, 10, 5, 15, 11, "BlueKnightSmall"));
         armies.addAll(army1);
         armies.addAll(army2);
 
@@ -52,7 +58,7 @@ public class BattleManager {
         boolean occupied = false;
         for(ArmyUnit a : armies)
         {
-            if(x == a.battleMapX && y == a.battleMapY)
+            if(x == a.getX() && y == a.getY())
             {
                 occupied = true;
                 if(army1.contains(a))
@@ -79,13 +85,8 @@ public class BattleManager {
         }
         if (! occupied)
         {
-            prime.setX(x);
-            prime.setY(y);
-        }
-        
-        
-                    
-        
+            prime.move(x, y);
+        }      
     }
 }
 

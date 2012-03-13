@@ -26,8 +26,8 @@ public class ArmyUnit  extends BaseUnit{
         at = a;
         df = d;
         sp = s;
-        battleMapX=this.x = x;
-        battleMapY=this.y = y;
+        battleMapX = x;
+        battleMapY = y;
         
     }
 
@@ -35,7 +35,7 @@ public class ArmyUnit  extends BaseUnit{
         this (i,i0,i1,i2,i3,i4,i5,new ImageIcon());
         System.out.println(path);
         this.sprite=GLTextureLoader.textureMap.get(path);
-        System.out.println(this.sprite.textureID);
+//        System.out.println(this.sprite.textureID);
         if (this.sprite==null){
             System.err.println("There was no sprite associated with "+path);
         }
@@ -43,30 +43,48 @@ public class ArmyUnit  extends BaseUnit{
     
     public int getX()
     {
-        return x;
+        return battleMapX;
     }
     public void setX(int newX)
     {
-        x = newX;
+     
         battleMapX = newX;
+    }
+    public int getY()
+    {
+        return battleMapY;
     }
     public void setY(int newY)
     {
-        y = newY;
+     
         battleMapY = newY;
     }
-    public void move()
+    
+    //This method can be used movement on plain terrain
+    public void move(int x, int y)
     {
-        sp--;
+        if(sp > 0)
+            if((Math.abs(battleMapX - x) <= 1) && (Math.abs(battleMapY - y) <= 1))
+            {
+                if((Math.abs(battleMapX - x) + Math.abs(battleMapY - y)) > 1)
+                {
+                    setX(x);
+                    setY(y);
+                    sp -= 3;
+                } else
+                {
+                    setX(x);
+                    setY(y);
+                    sp -= 2;
+                }
+            }
     }
+    
     public void rest()
     {
         sp = maxsp;
     }            
-    public int getY()
-    {
-        return y;
-    }
+
     public int getHp()
     {
         return hp;

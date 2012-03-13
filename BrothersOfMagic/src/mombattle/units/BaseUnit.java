@@ -24,6 +24,14 @@ public abstract class BaseUnit {
     
     public GLTexture sprite;
     
+    public int getX()
+    {
+        return battleMapX;
+    }
+    public int getY()
+    {
+        return battleMapY;
+    }
   
         
         

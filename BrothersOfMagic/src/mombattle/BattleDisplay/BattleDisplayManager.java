@@ -23,6 +23,9 @@ public class BattleDisplayManager {
     public int BD_WIDTH;
     public int BD_HEIGHT;
     
+    //The width and height of the sprites is 30 pixels, so we can use that to make a grid.
+    public int SHEIGHT = 30; public int SWIDTH = 30;
+    
     public ArrayList<BaseUnit> unitDrawList = null;
     public GLTextureLoader myLoader= new GLTextureLoader();
    
@@ -93,7 +96,7 @@ public class BattleDisplayManager {
         glPushMatrix();
         glBindTexture(GL_TEXTURE_2D, unit.sprite.textureID);
         //Todo this should be grid positions or something
-        glTranslatef(unit.battleMapX, unit.battleMapY, 0);
+        glTranslatef(unit.getX() * SHEIGHT, unit.getY() * SWIDTH, 0);
         glBegin(GL_QUADS);
         {
             glTexCoord2f(0, 0);

@@ -4,11 +4,12 @@
  */
 package mombattle;
 
-import mombattle.units.ArmyUnit;
+import mombattle.units.*;
 import Graphics.OpenGL.GLTexture;
 import Graphics.OpenGL.GLUtil;
 import Graphics.OpenGL.GLTextureLoader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -33,15 +34,19 @@ public class MOMBattle {
     // It was 580 now its 480.
     static int HEIGHT = 480;
     static boolean gameRunning = true;
-
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-    new MOMBattle().run();
-    
-    }
+    public static void main(String[] args) {       
+        new MOMBattle().run();
 
+    }
+    
+    //SampleArmies sample = new SampleArmies();
     BattleDisplayManager bdm = new BattleDisplayManager();
     BattleManager bm = new BattleManager();
 
@@ -65,8 +70,9 @@ public class MOMBattle {
             //Play the game with the mouse button.
             if (Mouse.isButtonDown(0)) {
                 
-                int mX = Mouse.getX() - Mouse.getX()%30; int mY = HEIGHT - (30 + Mouse.getY() - Mouse.getY()%30);
+                int mX = Mouse.getX() / bdm.SWIDTH; int mY = (HEIGHT/bdm.SHEIGHT) - (1 + Mouse.getY()/bdm.SWIDTH);
                 try {
+                    System.out.println(mX + " , " + mY);
                 bm.play(mX, mY);
                 } catch (NullPointerException e)
                 {
