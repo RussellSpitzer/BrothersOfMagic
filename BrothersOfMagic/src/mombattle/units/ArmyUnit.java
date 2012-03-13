@@ -12,11 +12,11 @@ import javax.swing.ImageIcon;
  *
  * @author Andrew
  */
-public class Character  extends BaseUnit{
+public class ArmyUnit  extends BaseUnit{
     private int maxhp, maxmp, maxsp, hp, mp, at, df, sp, x, y;
     //private ImageIcon sprite;
  
-    public Character( int h, int m, int a, int d, int s, int x, int y, ImageIcon sprite)
+    public ArmyUnit( int h, int m, int a, int d, int s, int x, int y, ImageIcon sprite)
     {
         maxhp = h;
         maxmp = m;
@@ -31,7 +31,7 @@ public class Character  extends BaseUnit{
         
     }
 
-    public Character(int i, int i0, int i1, int i2, int i3, int i4, int i5, String path) { 
+    public ArmyUnit(int i, int i0, int i1, int i2, int i3, int i4, int i5, String path) { 
         this (i,i0,i1,i2,i3,i4,i5,new ImageIcon());
         System.out.println(path);
         this.sprite=GLTextureLoader.textureMap.get(path);
@@ -48,10 +48,12 @@ public class Character  extends BaseUnit{
     public void setX(int newX)
     {
         x = newX;
+        battleMapX = newX;
     }
     public void setY(int newY)
     {
         y = newY;
+        battleMapY = newY;
     }
     public void move()
     {
@@ -92,10 +94,15 @@ public class Character  extends BaseUnit{
         return sp;
     }
     
-    public void attack(Character ch)
+    public void attack(ArmyUnit ch)
     {
      ch.attacked(at);   
     
+    }
+    
+    // This method does nothing
+    public void attack(BaseUnit b)
+    {
     }
     
     public void attacked(int enAt)

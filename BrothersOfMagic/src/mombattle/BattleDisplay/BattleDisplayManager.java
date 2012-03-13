@@ -50,6 +50,7 @@ public class BattleDisplayManager {
         myLoader.loadTexture("/resources/BlueKnightSmall.jpg", "BlueKnightSmall");
         myLoader.loadTexture("/resources/BlueSoldierSmall.jpg", "BlueSoldierSmall");
         myLoader.loadTexture("/resources/RedKnightSmall.jpg", "RedKnightSmall");
+        myLoader.loadTexture("/resources/Rock.jpg", "Rock");
         }
         catch (IOException e)
         {
@@ -60,7 +61,7 @@ public class BattleDisplayManager {
     }
     
     public void init(boolean createDisplay){
-        if (createDisplay) createDisplay(640,480);
+        if (createDisplay) createDisplay(630,480);
         glEnable(GL_TEXTURE_2D);
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();

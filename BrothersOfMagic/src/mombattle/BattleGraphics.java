@@ -4,7 +4,7 @@
  */
 package mombattle;
 
-import mombattle.units.Character;
+import mombattle.units.ArmyUnit;
 import Graphics.OpenGL.GLUtil;
 import javax.swing.*;
 import java.awt.*;
@@ -16,9 +16,9 @@ import org.lwjgl.opengl.Display;
  * @author Andrew
  */
 public class BattleGraphics extends JPanel{
-    Character prime;
-    Character[] c1;
-    Character[] c2;
+    ArmyUnit prime;
+    ArmyUnit[] c1;
+    ArmyUnit[] c2;
     BStat stat1, stat2;
     
             //Largely arbetraty sidelength of each cell
@@ -27,7 +27,7 @@ public class BattleGraphics extends JPanel{
     int side = 10;
     
     
-    public BattleGraphics(Character[] player, Character[] computer)
+    public BattleGraphics(ArmyUnit[] player, ArmyUnit[] computer)
     {
         c1 = player;
         c2 = computer;
@@ -127,7 +127,7 @@ public class BattleGraphics extends JPanel{
             g.drawRect((prime.getX()*size) - 1, (prime.getY()*size) - 1, side + 2, size + 2);
             
             
-            for(Character c : c1)
+            for(ArmyUnit c : c1)
             {
                 
                 
@@ -144,7 +144,7 @@ public class BattleGraphics extends JPanel{
             }
             }
                 
-            for(Character c : c2)
+            for(ArmyUnit c : c2)
             {
        
 //                c.getSprite().paintIcon(this, g, size * c.getX(), size * c.getY());
@@ -164,12 +164,12 @@ public class BattleGraphics extends JPanel{
     private class BStat extends JPanel
     {
 
-        Character ch;
+        ArmyUnit ch;
         Color c;
         JLabel label1;
         JLabel label2;
         
-        BStat(Character character)
+        BStat(ArmyUnit character)
         {
             ch = character;
             
@@ -203,11 +203,11 @@ public class BattleGraphics extends JPanel{
         
     public boolean isOccupied(Point p)
     {
-        for(Character c: c1)
+        for(ArmyUnit c: c1)
         { if((p.x == c.getX()) && (p.y == c.getY()))
             return true;
         }
-        for(Character c: c2)
+        for(ArmyUnit c: c2)
         { if((p.x == c.getX()) && (p.y == c.getY()))
             return true;
         }
@@ -220,7 +220,7 @@ public class BattleGraphics extends JPanel{
     {
         if(isOccupied(p))
         {
-        for(Character c: c2)
+        for(ArmyUnit c: c2)
         {
         if(prime.getSp() > 0)
         if((p.x == c.getX()) && (p.y == c.getY()) && ((Math.abs(prime.getX() - c.getX()) <= 1) && (Math.abs(prime.getY() - c.getY()) <= 1 )))
@@ -230,7 +230,7 @@ public class BattleGraphics extends JPanel{
             break;
         }
         }
-        for(Character c: c1)
+        for(ArmyUnit c: c1)
         {
             if((p.x == c.getX()) && (p.y == c.getY()))
         {
